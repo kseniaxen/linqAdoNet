@@ -4,8 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f59d6217fa484048b99d5e916bfbb0f5" Name="Diagram1">
-        <EntityTypeShape EntityType="DiseaseModel.TotalStat" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="c6143659d2154308b820a98fe0336743" Name="Diagram1">
+        <EntityTypeShape EntityType="DiseaseModel.Author" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiseaseModel.Book" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiseaseModel.Publisher" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiseaseModel.TotalStat" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiseaseModel.Large_table_3" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="DiseaseModel.FK__Book__IdAuthor__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="DiseaseModel.FK__Book__IdPublishe__4E88ABD4" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

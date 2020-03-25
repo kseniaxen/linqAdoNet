@@ -13,10 +13,10 @@ namespace LinqAdoNetDemo
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DiseaseEntities : DbContext
+    public partial class DiseaseEntities1 : DbContext
     {
-        public DiseaseEntities()
-            : base("name=DiseaseEntities")
+        public DiseaseEntities1()
+            : base("name=DiseaseEntities1")
         {
         }
     
@@ -25,6 +25,10 @@ namespace LinqAdoNetDemo
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Author> Authors { get; set; }
+        public virtual DbSet<Book> Books { get; set; }
+        public virtual DbSet<Publisher> Publishers { get; set; }
         public virtual DbSet<TotalStat> TotalStats { get; set; }
+        public virtual DbSet<Large_table_3> Large_table_3 { get; set; }
     }
 }
