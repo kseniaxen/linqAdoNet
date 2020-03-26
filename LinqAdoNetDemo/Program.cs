@@ -176,8 +176,15 @@ namespace LinqAdoNetDemo
         {
             using (DiseaseEntities1 db = new DiseaseEntities1())
             {
-                db.Books.Add(book);
-                db.SaveChanges();
+                Book oldBook =
+                    db.Books.Where(
+                        (b) => (b.Title == book.Title && b.Author.FirstName == book.Author.FirstName && b.Author.LastName == book.Author.LastName)
+                        ).FirstOrDefault();
+                if (oldBook == null)
+                {
+                    db.Books.Add(book);
+                    db.SaveChanges();
+                }
             }
         }
 
