@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LinqAdoNetDemo.DAO;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -147,99 +148,38 @@ namespace LinqAdoNetDemo
                 Console.WriteLine(book);
             } */
 
-            foreach (var book in GetAllBooksFullData())
+            /* foreach (var book in BookDAO.GetAllBooksFullData())
             {
                 Console.WriteLine(book);
-            }
-        }
+            } */
 
-        private static void AddAuthor(Author author)
-        {
-            using (DiseaseEntities1 db = new DiseaseEntities1())
-            {
-                db.Authors.Add(author);
-                db.SaveChanges();
-            }
-        }
+            // CRUD
+            // Create, Read*, Update, Delete
+            // ReadAll(), Read(id)
 
-        private static IEnumerable<Author> GetAllAuthors()
-        {
-            IEnumerable<Author> authors;
-            using (DiseaseEntities1 db = new DiseaseEntities1())
-            {
-                authors = db.Authors.ToList();
-            }
-            return authors;
-        }
+            var context = new DiseaseEntities1();
 
-        private static void AddBook(Book book)
-        {
-            using (DiseaseEntities1 db = new DiseaseEntities1())
-            {
-                Book oldBook =
-                    db.Books.Where(
-                        (b) => (b.Title == book.Title && b.Author.FirstName == book.Author.FirstName && b.Author.LastName == book.Author.LastName)
-                        ).FirstOrDefault();
-                if (oldBook == null)
-                {
-                    db.Books.Add(book);
-                    db.SaveChanges();
-                }
-            }
-        }
+            //var author2 = new AuthorDAO(new DiseaseEntities1()).Find(2);
+            // Console.WriteLine(author2.FirstName);
 
-        private static IEnumerable<Book> GetAllBooks()
-        {
-            IEnumerable<Book> books;
-            using (DiseaseEntities1 db = new DiseaseEntities1())
-            {
-                books = db.Books.ToList();
-            }
-            return books;
-        }
+            /* var publisherDAO = new PublisherDAO(context);
+            var publisher3 = publisherDAO.Find(5);
+            Console.WriteLine(publisher3);
+            var publisher3Deleted = publisherDAO.Remove(publisher3);
+            Console.WriteLine(publisher3Deleted); */
 
-        private static IEnumerable<string> GetAllBooksFullData(DiseaseEntities1 db)
-        {
-            IEnumerable<string> books;
-            books =
-                db.Books.Select(
-                    (b) => b.Author.LastName + " " + b.Author.FirstName + ". " + b.Title + " (" + b.Publisher.PublisherName + ")"
-                    ).ToList();
-            return books;
-        }
-
-        private static IEnumerable<string> GetAllBooksFullData()
-        {
-            IEnumerable<string> books;
-            using (DiseaseEntities1 db = new DiseaseEntities1())
-            {
-                books =
-                db.Books.Select(
-                    (b) => $"{b.Author.LastName} {b.Author.FirstName}. {b.Title} ({b.Publisher.PublisherName})"
-                    ).ToList();
-                // Console.WriteLine(books);
-            }
-            // return books.ToList();
-            return books;
-        }
-
-        private static void AddPublisher(Publisher publisher)
-        {
-            using (DiseaseEntities1 db = new DiseaseEntities1())
-            {
-                db.Publishers.Add(publisher);
-                db.SaveChanges();
-            }
-        }
-
-        private static IEnumerable<Publisher> GetAllPublishers()
-        {
-            IEnumerable<Publisher> publishers;
-            using (DiseaseEntities1 db = new DiseaseEntities1())
-            {
-                publishers = db.Publishers.ToList();
-            }
-            return publishers;
+            BookDAO bookDAO = new BookDAO(context);
+            var book = bookDAO.Find(10);
+            book.Title = "T1001";
+            bookDAO.Save(book);
+            /*bookDAO.Save(
+                new Book() {
+                    Title = "t1000",
+                    Pages = 1000,
+                    Price = 999,
+                    IdAuthor = 1,
+                    IdPublisher = 3
+                });*/
         }
     }
 }

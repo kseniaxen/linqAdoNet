@@ -58,6 +58,10 @@
     <Compile Include="Book.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAO\AbstractDAO.cs" />
+    <Compile Include="DAO\AuthorDAO.cs" />
+    <Compile Include="DAO\BookDAO.cs" />
+    <Compile Include="DAO\PublisherDAO.cs" />
     <Compile Include="Large_table_3.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
