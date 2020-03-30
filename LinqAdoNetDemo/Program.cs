@@ -169,17 +169,23 @@ namespace LinqAdoNetDemo
             Console.WriteLine(publisher3Deleted); */
 
             BookDAO bookDAO = new BookDAO(context);
-            var book = bookDAO.Find(10);
-            book.Title = "T1001";
-            bookDAO.Save(book);
-            /*bookDAO.Save(
-                new Book() {
-                    Title = "t1000",
-                    Pages = 1000,
-                    Price = 999,
-                    IdAuthor = 1,
-                    IdPublisher = 3
-                });*/
+            var book = bookDAO.Find(2);
+         
+             book.Title = "T1001";
+            //bookDAO.Save(book);
+            //bookDAO.Save(
+            //    new Book()
+            //    {
+            //        Title = "t1000",
+            //        Pages = 1000,
+            //        Price = 999,
+            //        IdAuthor = 1,
+            //        IdPublisher = 2
+            //    });
+
+            PublisherDAO publisherDAO = new PublisherDAO(context);
+            var publisher = publisherDAO.Find(2);
+            publisherDAO.Remove(publisher);
         }
     }
 }

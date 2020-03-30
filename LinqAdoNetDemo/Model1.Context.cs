@@ -16,7 +16,7 @@ namespace LinqAdoNetDemo
     public partial class DiseaseEntities1 : DbContext
     {
         public DiseaseEntities1()
-            : base("name=DiseaseEntities1")
+            : base("name=BookDB")
         {
         }
     
