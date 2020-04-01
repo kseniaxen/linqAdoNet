@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
@@ -169,9 +170,20 @@ namespace LinqAdoNetDemo
             Console.WriteLine(publisher3Deleted); */
 
             BookDAO bookDAO = new BookDAO(context);
-            var book = bookDAO.Find(2);
-         
-             book.Title = "T1001";
+
+            Book[] book = context.Books.ToArray();
+
+            List<Book> books = bookDAO.FindListInAuthorAndTitle("B", book);
+
+            foreach (var item in books)
+            {
+                Console.WriteLine($"id = {item.Id} Title = {item.Title} AuthorFirstName = {item.Author.FirstName}");
+            }
+
+            Console.ReadLine();
+            // var book = bookDAO.Find(2);
+
+            // book.Title = "T1001";
             //bookDAO.Save(book);
             //bookDAO.Save(
             //    new Book()
@@ -183,9 +195,10 @@ namespace LinqAdoNetDemo
             //        IdPublisher = 2
             //    });
 
-            PublisherDAO publisherDAO = new PublisherDAO(context);
-            var publisher = publisherDAO.Find(2);
-            publisherDAO.Remove(publisher);
+            //PublisherDAO publisherDAO = new PublisherDAO(context);
+            //var publisher = publisherDAO.Find(2);
+            //publisherDAO.Remove(publisher);
+
         }
     }
 }

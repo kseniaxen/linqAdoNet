@@ -12,5 +12,17 @@ namespace LinqAdoNetDemo.DAO
         {
 
         }
+        public List<Book> FindListInAuthorAndTitle(string _text, Book[] book)
+        {
+            List<Book> listBooks = new List<Book>();
+            for (int i = 0; i < book.Length; i++)
+            {
+                if (book[i].Title.Contains(_text) || book[i].Author.FirstName.Contains(_text))
+                {
+                    listBooks.Add(book[i]);
+                }
+            }
+            return listBooks;
+        }
     }
 }

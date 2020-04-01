@@ -94,6 +94,7 @@ namespace LinqAdoNetDemo.DAO
                 _name = _name.Remove(_name.Length - 1) + "ies";
             }
             return _name;
+            
         }
     }
 }
