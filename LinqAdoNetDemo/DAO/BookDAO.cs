@@ -12,6 +12,7 @@ namespace LinqAdoNetDemo.DAO
         {
 
         }
+
         public List<Book> FindListInAuthorAndTitle(string _text, Book[] book)
         {
             List<Book> listBooks = new List<Book>();

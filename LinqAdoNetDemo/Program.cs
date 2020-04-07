@@ -169,17 +169,28 @@ namespace LinqAdoNetDemo
             var publisher3Deleted = publisherDAO.Remove(publisher3);
             Console.WriteLine(publisher3Deleted); */
 
-            BookDAO bookDAO = new BookDAO(context);
+            //BookDAO bookDAO = new BookDAO(context);
 
-            Book[] book = context.Books.ToArray();
+            //Book[] book = context.Books.ToArray();
 
-            List<Book> books = bookDAO.FindListInAuthorAndTitle("B", book);
+            //List<Book> books = bookDAO.FindListInAuthorAndTitle("B", book);
 
-            foreach (var item in books)
+            //foreach (var item in books)
+            //{
+            //    Console.WriteLine($"id = {item.Id} Title = {item.Title} AuthorFirstName = {item.Author.FirstName}");
+            //}
+
+            using (DiseaseEntities1 db = new DiseaseEntities1())
             {
-                Console.WriteLine($"id = {item.Id} Title = {item.Title} AuthorFirstName = {item.Author.FirstName}");
+                db.Database.Log = Console.Write;
+                db.Books.ToList().ForEach(
+                    b =>
+                    {
+                        Console.WriteLine(  b.Author.LastName + " " + b.Author.FirstName + ". " + b.Title + " (" + b.Publisher.PublisherName + ")" );
+                    }
+                );
+                
             }
-
             Console.ReadLine();
             // var book = bookDAO.Find(2);
 
