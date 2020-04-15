@@ -25,5 +25,18 @@ namespace LinqAdoNetDemo.DAO
             }
             return listBooks;
         }
+
+        public List<Book> FindListInAuthorLastName(string _text, Book[] book)
+        {
+            List<Book> listBooks = new List<Book>();
+            for (int i = 0; i < book.Length; i++)
+            {
+                if (book[i].Author.LastName.Contains(_text))
+                {
+                    listBooks.Add(book[i]);
+                }
+            }
+            return listBooks;
+        }
     }
 }

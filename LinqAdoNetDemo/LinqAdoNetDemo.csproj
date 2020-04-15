@@ -85,6 +85,7 @@
     <Compile Include="Publisher.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repo.cs" />
     <Compile Include="TotalStat.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
