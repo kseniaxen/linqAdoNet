@@ -35,5 +35,41 @@ namespace WinFormsAdoNet
                 btFind.Enabled = false;
             }
         }
+
+        private void buttonLazyLoad_Click(object sender, EventArgs e)
+        {  
+            try
+            {
+                long start = DateTime.Now.Ticks;
+                //some actions are performed here 
+                dataGridView1.DataSource = Repo.getDataTableBooksLoading(1);
+                long end = DateTime.Now.Ticks;
+                long tick = end - start; //number of ticks
+                long milliseconds = tick / TimeSpan.TicksPerMillisecond; //number of milliseconds
+                labelTime.Text = milliseconds.ToString();
+            }
+            catch (Exception ex)
+            {
+                //handling exceptions
+            }
+        }
+
+        private void buttonEagerLoad_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                long start = DateTime.Now.Ticks;
+                //some actions are performed here 
+                dataGridView1.DataSource = Repo.getDataTableBooksLoading(5);
+                long end = DateTime.Now.Ticks;
+                long tick = end - start; //number of ticks
+                long milliseconds = tick / TimeSpan.TicksPerMillisecond; //number of milliseconds
+                labelTime.Text = milliseconds.ToString();
+            }
+            catch (Exception ex)
+            {
+                //handling exceptions
+            }
+        }
     }
 }

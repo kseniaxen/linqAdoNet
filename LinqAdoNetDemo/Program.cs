@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -158,7 +159,7 @@ namespace LinqAdoNetDemo
             // Create, Read*, Update, Delete
             // ReadAll(), Read(id)
 
-          
+
 
             //var author2 = new AuthorDAO(new DiseaseEntities1()).Find(2);
             // Console.WriteLine(author2.FirstName);
@@ -192,7 +193,20 @@ namespace LinqAdoNetDemo
             //    );
 
             //}
-            Console.ReadLine();
+
+            //string title = "Book";
+            //Random random = new Random();
+            //using (StreamWriter sw = new StreamWriter("dataBook.txt", false, System.Text.Encoding.Default))
+            //{
+            //    for (int i = 0; i < 1000; i++)
+            //    {
+            //        sw.WriteLine($"{title}{i} {random.Next(1,3)} {random.Next(1,1000)} {random.Next(1,1000)} 1");
+            //    }
+            //}
+
+            //Repo repo = new Repo();
+            //repo.readFromTxtFile("dataBook.txt");
+                Console.ReadLine();
             // var book = bookDAO.Find(2);
 
             // book.Title = "T1001";
@@ -210,6 +224,9 @@ namespace LinqAdoNetDemo
             //PublisherDAO publisherDAO = new PublisherDAO(context);
             //var publisher = publisherDAO.Find(2);
             //publisherDAO.Remove(publisher);
+
+
+
 
         }
     }
